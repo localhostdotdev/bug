@@ -8,18 +8,3 @@ html
   body
     pre
       = yield
-
-      - [false, true, nil, 'string', '  ', {}, { a: 1 }, [1, 2], []].each do |value|
-        - key = "#{value.inspect}".to_sym
-        - content_for(key) { value }
-
-        p
-          b= "### content_for(#{key.inspect}) { #{value.inspect} }"
-
-        ul
-          li= "- content_for?(#{key}) #{content_for?(key).inspect}"
-          li= "- content_for(#{key}) #{content_for(key).inspect}"
-          li= "- yield(#{key}) #{yield(key).inspect}"
-
-        p
-          ' -------
