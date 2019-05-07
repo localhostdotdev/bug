@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_07_173135) do
+ActiveRecord::Schema.define(version: 2019_05_07_175419) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "post_id", null: false
@@ -40,9 +40,10 @@ ActiveRecord::Schema.define(version: 2019_05_07_173135) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_tags_on_name"
   end
 
   add_foreign_key "comments", "posts"
